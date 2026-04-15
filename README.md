@@ -1,1 +1,147 @@
-# Patrulla-juvenil
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Patrulla Juvenil</title>
+
+<script>
+if(localStorage.getItem("login") !== "true"){
+    window.location.href = "login.html";
+}
+</script>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial;
+}
+
+header{
+    background:#111;
+    color:white;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:15px 20px;
+}
+
+.logo{
+    font-size:20px;
+    font-weight:bold;
+}
+
+nav{
+    display:flex;
+    gap:20px;
+}
+
+nav a{
+    color:white;
+    text-decoration:none;
+}
+
+.menu-toggle{
+    display:none;
+    font-size:25px;
+    cursor:pointer;
+}
+
+.banner{
+    height:300px;
+    background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)),
+                url('imagenes/banner.jpeg') no-repeat center/cover;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    color:white;
+    font-size:30px;
+    font-weight:bold;
+}
+
+.galeria{
+    display:flex;
+    justify-content:center;
+    gap:20px;
+    flex-wrap:wrap;
+    margin:20px;
+}
+
+figure img{
+    width:200px;
+}
+
+@media(max-width:768px){
+    nav{
+        position:absolute;
+        top:60px;
+        right:0;
+        background:#111;
+        flex-direction:column;
+        width:200px;
+        display:none;
+        padding:10px;
+    }
+
+    nav.active{
+        display:flex;
+    }
+
+    .menu-toggle{
+        display:block;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+    <div class="logo">Patrulla Juvenil</div>
+
+    <div class="menu-toggle" onclick="toggleMenu()">☰</div>
+
+    <nav id="menu">
+        <a href="index.html">Inicio</a>
+        <a href="Asistencia.html">Asistencia</a>
+        <a href="Evaluaciones.html">Evaluaciones</a>
+        <a href="Eventos.html">Eventos</a>
+    </nav>
+
+    <button onclick="logout()">Salir</button>
+</header>
+
+<section class="banner">
+    Plataforma PJ
+</section>
+
+<div class="galeria">
+<figure>
+ <a href="Evaluaciones.html">
+<img src="imagenes/evaluacion.jpeg">
+</a>
+</figure>
+
+    <figure>
+        <a href="Asistencia.html">
+            <img src="imagenes/logo.jpeg">
+            <figcaption>Evaluaciones</figcaption>
+        </a>
+    </figure>
+</div>
+
+<script>
+function toggleMenu(){
+    document.getElementById("menu").classList.toggle("active");
+}
+
+function logout(){
+    localStorage.removeItem("login");
+    window.location.href = "login.html";
+}
+</script>
+
+</body>
+</html>
